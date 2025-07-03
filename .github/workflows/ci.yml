@@ -9,29 +9,44 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code 
+      - name: Checkout code
         uses: actions/checkout@v4
-
       - name: Set up Rust
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
           override: true
-
       - name: Build
         run: |
           cd quote_of_the_day
           cargo build --verbose
 
-      - name: Run tests
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set up Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+      - name: Test
         run: |
           cd quote_of_the_day
           cargo test --verbose
 
+  celebrate:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
       - name: Celebrate Success 🎉
-        if: success()
         run: |
-          echo "🎊 All checks passed! Here's a random fun fact:"
+          echo "::group::🎊 All checks passed!"
+          echo "All checks passed! Here's a random fun fact:"
+          echo "::endgroup::"
+          echo "::group::Random Fun Fact"
           curl -s https://uselessfacts.jsph.pl/random.txt?language=en | grep -v '^source:'
+          echo "::endgroup::"
