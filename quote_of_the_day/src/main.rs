@@ -34,4 +34,3 @@ mod tests {
         assert!(quotes.contains(&"Do one thing every day that scares you."));
     }
 }
-}
