@@ -1,0 +1,41 @@
+# Compiled source files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.dylib
+*.pyc
+*.pyo
+*.pyd
+*.out
+*.obj
+
+# Rust specific
+target/
+Cargo.lock
+
+# IDE and editor folders
+.idea/
+.vscode/
+.DS_Store
+*.swp
+*.swo
+*.swn
+*.bak
+*.tmp
+*~
+
+# Logs
+*.log
+
+# Node/npm
+node_modules/
+
+# Python virtualenv
+venv/
+.venv/
+
+# macOS
+.DS_Store
