@@ -1,4 +1,4 @@
-name: Rust CI
+name: Rust CI Playground
 
 on:
   push:
@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Set up Rust
+      - name: Set up Rust 
         uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
